@@ -12,7 +12,9 @@ import {
   import cn from 'classnames';
   import { Todo } from './Todo';
   import { LoadContext } from '../../Context/LoadContext';
-  
+
+  import {FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+  import {faCheck} from '@fortawesome/free-solid-svg-icons'
   interface Props {
     todo: Todo,
     onDelete: (id: number) => void,
@@ -76,15 +78,19 @@ import {
   
     return (
       <div className={cn('group relative grid grid-cols-3  font-[24px] leading-[1.4em] border-b border-gray-300 last:border-b-0   ', { completed })}>
-        <label  className="  cursor-pointer  bg-no-repeat bg-center-left">
+        <label  className=" relative cursor-pointer  bg-no-repeat bg-center-left">
           <input
           
             type="checkbox"
-            className={`  opacity-100 form-checkbox h-[30px] w-[30px] ml-[20px] mt-[11px]  border border-gray-500 rounded-full appearance-none ${completed ? 'bg-green-500' : ' '}  `}
+            className={`  opacity-100 form-checkbox h-[30px] w-[30px] ml-[20px] mt-[11px]  border border-gray-500 rounded-full appearance-none   `}
             onChange={() => {
               onChangeStatus(id, { completed: !completed });
             }}
           />
+           <FontAwesomeIcon
+        icon = {faCheck}
+        className={`text-[5px] h-[20px] w-[20px]   ${completed ? 'text-green-500 ' : ' text-transparent'}  absolute left-[25px] top-[15px]  transition `}
+       />
          
         </label>
   
